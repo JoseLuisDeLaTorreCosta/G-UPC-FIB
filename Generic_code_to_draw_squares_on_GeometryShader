@@ -1,0 +1,53 @@
+void emitData(vec4 color, vec3 pos) {
+	gfrontColor = color;
+	gl_Position = modelViewProjectionMatrix * vec4(pos, 1.0);
+	EmitVertex();
+}
+
+void createBox(vec3 c, float r) {
+	vec3 xyz = c + vec3(-r, -r, -r);
+	vec3 xyZ = c + vec3(-r, -r, r);
+	vec3 xYz = c + vec3(-r, r, -r);
+	vec3 xYZ = c + vec3(-r, r, r);
+	vec3 Xyz = c + vec3(r, -r, -r);
+	vec3 XyZ = c + vec3(r, -r, r);
+	vec3 XYz = c + vec3(r, r, -r);
+	vec3 XYZ = c + vec3(r, r, r);
+
+	vec4 color = vec4(c*vec3(0.5) + 0.5, 1.0);
+	emitData(color, xyZ);
+	emitData(color, XyZ);
+	emitData(color, xYZ);
+	emitData(color, XYZ);
+	EndPrimitive();
+
+	emitData(color, XyZ);
+	emitData(color, Xyz);
+	emitData(color, XYZ);
+	emitData(color, XYz);
+	EndPrimitive();
+
+	emitData(color, Xyz);
+	emitData(color, xyz);
+	emitData(color, XYz);
+	emitData(color, xYz);
+	EndPrimitive();
+
+	emitData(color, xyZ);
+	emitData(color, xyz);
+	emitData(color, xYZ);
+	emitData(color, xYz);
+	EndPrimitive();
+
+	emitData(color, xyZ);
+	emitData(color, XyZ);
+	emitData(color, xyz);
+	emitData(color, Xyz);
+	EndPrimitive();
+
+	emitData(color, xYZ);
+	emitData(color, XYZ);
+	emitData(color, xYz);
+	emitData(color, XYz);
+	EndPrimitive();
+}

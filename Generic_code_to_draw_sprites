@@ -1,0 +1,19 @@
+void painting_normal(vec2 vtexcoord, int num, float sprites) {
+    fragColor = texture(colormap, vec2(mod(fract(vtexcoord.x)/sprites, 1/sprites) + num/sprites, fract(vtexcoord.y)));
+}
+
+void painting_reflexed_x(vec2 vtexcoord, int num, float sprites) {
+    fragColor = texture(colormap, vec2(-(mod(fract(vtexcoord.x)/sprites, 1/sprites) + num/sprites), fract(vtexcoord.y)));
+}
+
+void painting_reflexed_y(vec2 vtexcoord, int num, float sprites) {
+    fragColor = texture(colormap, vec2(mod(fract(vtexcoord.x)/sprites, 1/sprites) + num/sprites, -fract(vtexcoord.y)));
+}
+
+void painting_reflexed_x_y(vec2 vtexcoord, int num, float sprites) {
+    fragColor = texture(colormap, vec2(-(mod(fract(vtexcoord.x)/sprites, 1/sprites) + num/sprites), -fract(vtexcoord.y)));
+}
+
+void painting_rotated(vec2 vtexcoord, int num, float sprites) {
+    fragColor = texture(colormap, vec2(mod(fract(vtexcoord.y)/sprites, 1/sprites) + num/sprites, fract(vtexcoord.x)));
+}
